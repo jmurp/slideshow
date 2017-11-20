@@ -22,6 +22,10 @@ $.ajax({
     success: function (data) {
         $(data).find("a").attr("href",function (i,val) {
             if (val.match(/\.(jpe?g|png)$/)) {
+                console.log(val);
+                if (!val.includes("/images/")) {
+                    val = "/images/"+val;
+                }
                 imageSources.push(val);
             }
         });
