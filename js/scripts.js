@@ -55,7 +55,7 @@ function loadSite() {
 function addThumb(imageSource) {
     var thumb = document.createElement("div");
     thumb.classList.add("thumbnail");
-    thumb.style.backgroundImage = "url('.."+imageSource+"')";
+    thumb.style.backgroundImage = "url('"+imageSource+"')";
     thumb.addEventListener("click",thumbClick.bind(thumb,imageSource));
     thumbnails.appendChild(thumb);
 }
