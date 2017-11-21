@@ -22,9 +22,10 @@ $.ajax({
     success: function (data) {
         $(data).find("a").attr("href",function (i,val) {
             if (val.match(/\.(jpe?g|png)$/)) {
-                console.log(val);
-                if (!val.includes("/images/")) {
-                    val = "/images/"+val;
+                console.log("ajax request found file: "+val);
+                if (!val.includes("images/")) {
+                    val = "images/"+val;
+                    console.log("setting val to : "+val);
                 }
                 imageSources.push(val);
             }
@@ -60,6 +61,7 @@ function addThumb(imageSource) {
     var thumb = document.createElement("div");
     thumb.classList.add("thumbnail");
     thumb.style.backgroundImage = "url('"+imageSource+"')";
+    console.log("adding thumb with backgroundImage: "+imageSource);
     thumb.addEventListener("click",thumbClick.bind(thumb,imageSource));
     thumbnails.appendChild(thumb);
 }
@@ -70,6 +72,7 @@ function setImageInView(imageSource) {
     updateImageView();
 }
 function updateImageView() {
+    console.log("setting img tag src to: "+currentImage.source);
     imageInView.setAttribute("src",currentImage.source);
 }
 function thumbClick(imageSource) {
